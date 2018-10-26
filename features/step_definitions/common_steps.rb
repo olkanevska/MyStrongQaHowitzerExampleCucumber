@@ -2,22 +2,48 @@
 #                      PREREQUISITES                        #
 #############################################################
 
-Given 'I have entered {float} into the calculator' do |_input|
-  pending
+Given /(.+) page of web application/ do |page|
+  page.open
 end
 
 ####################################
 #              ACTIONS             #
 ####################################
 
-When 'I press {word}' do |_button|
-  pending
+When /I am navigating on (.+) page/ do |page|
+  page.open
+end
+
+When /I click (.+?) menu item on (.+) page/ do |text, page|
+  page.on { main_menu_section.choose_menu(text.capitalize) }
+end
+
+When /I click (.+?) link on (.+) page/ do |text, page|
+  page.on { navigate_to_link(text.capitalize) }
 end
 
 ####################################
 #              CHECKS              #
 ####################################
 
-Then 'the result should be {float} on the screen' do |_output|
-  pending
+Then /I should be redirected to (.+) page/ do |page|
+  expect(page).to be_displayed
+end
+
+Then 'I should be logged in the system' do
+  HomePage.on do
+    is_expected.to have_main_menu_section
+    main_menu_section.authenticated? out(:@user).name
+  end
+end
+
+Then 'I should not be logged in the system' do
+  HomePage.on do
+    is_expected.to have_main_menu_section
+    main_menu_section.not_authenticated?
+  end
+end
+
+Then /I should see following text on (.+) page:/ do |page, text|
+  page.on { expect(text).to include(text) }
 end
