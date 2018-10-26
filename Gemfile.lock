@@ -163,6 +163,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  byebug (~> 10.0)
   capybara-screenshot
   cucumber (~> 3.0)
   cuke_sniffer
