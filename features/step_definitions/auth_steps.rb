@@ -46,7 +46,7 @@ end
 #              CHECKS              #
 ####################################
 
-When(/^I fill form on sign up page with blank data$/) do
+When 'I fill form on sign up page with blank data' do
   param = {}
   SignUpPage.on { fill_form(param) }
 end
