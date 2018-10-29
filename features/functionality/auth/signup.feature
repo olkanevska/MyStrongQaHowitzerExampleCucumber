@@ -1,6 +1,6 @@
-Feature: Sing Up
+Feature: Sign Up
   As a user
-  I want to sing up to the system
+  I want to sign up to the system
   So I can login with a new account
 
   @smoke
