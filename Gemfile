@@ -21,4 +21,4 @@ gem 'syntax'
 # See https://github.com/jnicklas/capybara#poltergeist
 # gem 'poltergeist', git: 'https://github.com/teampoltergeist/poltergeist.git', branch: :master
 
-gem "byebug", "~> 10.0", :groups => [:development, :test]
+gem 'byebug', '~> 10.0', groups: %i[development test]

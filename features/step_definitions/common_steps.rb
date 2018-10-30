@@ -33,17 +33,17 @@ end
 Then 'I should be logged in the system' do
   HomePage.on do
     is_expected.to have_main_menu_section
-    main_menu_section.authenticated? out(:@user).name
+    expect(main_menu_section).to be_authenticated(out(:@user).name)
   end
 end
 
 Then 'I should not be logged in the system' do
   HomePage.on do
     is_expected.to have_main_menu_section
-    main_menu_section.not_authenticated?
+    expect(main_menu_section).to be_not_authenticated
   end
 end
 
-Then /I should see following text on (.+) page:/ do |page, text|
-  page.on { expect(text).to include(text) }
+Then /I should see following text on (.+) page:/ do |page, message|
+  page.on { expect(text).to include(message) }
 end
