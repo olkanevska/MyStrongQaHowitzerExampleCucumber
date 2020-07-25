@@ -1,13 +1,8 @@
 require_relative 'base_page'
 class AccountSummaryPage < BasePage
   path '/bank/account-summary.html'
-  validate :title, /\AZero - Account Summary\z/
-  section :main_menu
-
-  element :account,   ".dropdown-toggle"
-
-  def user_name_icon
-      account_elements.last.text
-  end
+  validate  :title, /\AZero - Account Summary\z/
+  section   :main_menu
+  section   :top_nav_menu
 
 end
