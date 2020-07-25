@@ -1,60 +1,35 @@
-Feature: Sign Up
-  As a user
-  I want to sign up to the system
-  So I can login with a new account
+Feature: Login
 
   @smoke
-  Scenario: user can open sign up page via menu
+  Scenario: An user can open sign in page via home page
     Given home page of web application
-    When I click register menu item on home page
-    Then I should be redirected to sign up page
+    When I click Signin button on home page
+    Then I should be redirected to login page
 
   @smoke
-  Scenario: visitor can initiate sign up
+  Scenario: An user can sign in with correct credentials
     Given login page of web application
-    When I click sign up link on login page
-    Then I should be redirected to sign up page
-
-  @smoke
-  Scenario: user can sign up with correct credentials
-    Given sign up page of web application
-    When I fill form on sign up page with new data
-    And I submit sign up form on sign up page
-    Then I should be redirected to home page
+    When I fill login form with test data
+    And I submit login form
+    Then I should be redirected to account summary page
     And I should be logged in the system
 
-  @p1
-  Scenario: user can not sign up with blank data
-    Given sign up page of web application
-    When I fill form on sign up page with blank data
-    And I submit sign up form on sign up page
-    Then I should see following text on sign up page:
+  Scenario: An user can not sign in with blank data
+    Given login page of web application
+    When I fill login form with blank data
+    And I submit login form
+    Then I should see following text on login page:
     """
-    Please review the problems below:
+    Login and/or password are wrong.
     """
-    When I am navigating on home page
-    And I should not be logged in the system
 
-  @p1
-  Scenario: user can not login with short password
-    Given sign up page of web application
-    When I fill form on sign up page with short password
-    And I submit sign up form on sign up page
-    Then I should see following text on sign up page:
+  Scenario: An user can not login with wrong password
+    Given login page of web application
+    When I fill form with wrong password
+    And I submit login form
+    Then I should see following text on login page:
     """
-    is too short (minimum is 8 characters)
+    Login and/or password are wrong.
     """
-    When I am navigating on home page
-    And I should not be logged in the system
 
-  @p1
-  Scenario: user can not login with different password data
-    Given sign up page of web application
-    When I fill form on sign up page with different password data
-    And I submit sign up form on sign up page
-    Then I should see following text on sign up page:
-     """
-     doesn't match Password
-     """
-    And I am navigating on home page
-    And I should not be logged in the system
+
